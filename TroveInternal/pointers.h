@@ -18,6 +18,9 @@ public:
 
 	using add_message_t = void(__thiscall*)(LPCRITICAL_SECTION* this_, const char* a2, int a3, DWORD* a4);
 	add_message_t m_add_message{};
+
+	using iggy_player_call_t = int(__stdcall*)(DWORD, DWORD, DWORD, DWORD, DWORD);
+	iggy_player_call_t m_iggy_player_call{};
 };
 
 inline std::unique_ptr<pointers> g_pointers{};
