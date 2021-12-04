@@ -18,6 +18,7 @@ public:
 	void enable();
 	void disable();
 private:
+	static constexpr auto dynamic_cast_length = 1;
 	void*** m_object;
 	std::size_t m_num_funcs;
 
