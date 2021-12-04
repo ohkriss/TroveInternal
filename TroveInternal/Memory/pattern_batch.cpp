@@ -1,4 +1,4 @@
-#include "../pch.h"
+#include "pch.h"
 #include "pattern_batch.h"
 #include "range.h"
 

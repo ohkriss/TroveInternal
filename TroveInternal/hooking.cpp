@@ -39,7 +39,9 @@ void hooking::enable()
 
 	m_set_cursor_pos_hook.enable();
 	m_convert_thread_to_fiber_hook.enable();
+
 	m_channel_send_hook.enable();
+
 	m_enabled = true;
 }
 
@@ -53,6 +55,7 @@ void hooking::disable()
 
 	**reinterpret_cast<void***>(g_pointers->m_present) = m_originalPresent;
 	**reinterpret_cast<void***>(g_pointers->m_resizebuffers) = m_originalResizeBuffers;
+
 	SetWindowLongPtrW(g_pointers->m_hwnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(m_og_wndproc));
 }
 
@@ -87,6 +90,7 @@ HRESULT __stdcall hooks::swapchain_present(IDXGISwapChain* this_, UINT sync_inte
 	{
 		g_renderer->on_present();
 	}
+
 	return g_hooking->m_originalPresent(this_, sync_interval, flags);
 }
 

@@ -88,10 +88,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;TROVEINTERNAL_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>F:\Github\TroveInternal\vendor\ImGui\examples;F:\Github\TroveInternal\vendor\ImGui;F:\Github\TroveInternal\vendor\g3log\src;F:\Github\TroveInternal\vendor\fmtlib\include;F:\Github\TroveInternal\vendor\json\single_include;F:\Github\TroveInternal\vendor\MinHook\include;F:\Github\TroveInternal\vendor\StackWalker\Main\StackWalker;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Github\TroveInternal\TroveInternal;F:\Github\TroveInternal\TroveInternal\Memory;F:\Github\TroveInternal\vendor\ImGui\examples;F:\Github\TroveInternal\vendor\ImGui;F:\Github\TroveInternal\vendor\g3log\src;F:\Github\TroveInternal\vendor\fmtlib\include;F:\Github\TroveInternal\vendor\json\single_include;F:\Github\TroveInternal\vendor\MinHook\include;F:\Github\TroveInternal\vendor\StackWalker\Main\StackWalker;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -107,10 +107,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;TROVEINTERNAL_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>F:\Github\TroveInternal\vendor\ImGui\examples;F:\Github\TroveInternal\vendor\ImGui;F:\Github\TroveInternal\vendor\g3log\src;F:\Github\TroveInternal\vendor\fmtlib\include;F:\Github\TroveInternal\vendor\json\single_include;F:\Github\TroveInternal\vendor\MinHook\include;F:\Github\TroveInternal\vendor\StackWalker\Main\StackWalker;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Github\TroveInternal\TroveInternal;F:\Github\TroveInternal\TroveInternal\Memory;F:\Github\TroveInternal\vendor\ImGui\examples;F:\Github\TroveInternal\vendor\ImGui;F:\Github\TroveInternal\vendor\g3log\src;F:\Github\TroveInternal\vendor\fmtlib\include;F:\Github\TroveInternal\vendor\json\single_include;F:\Github\TroveInternal\vendor\MinHook\include;F:\Github\TroveInternal\vendor\StackWalker\Main\StackWalker;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

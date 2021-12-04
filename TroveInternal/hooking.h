@@ -27,6 +27,7 @@ public:
 
 	void enable();
 	void disable();
+
 	std::add_pointer_t<HRESULT __stdcall(IDXGISwapChain* this_, UINT sync_interval, UINT flags)> m_originalPresent;
 	std::add_pointer_t<HRESULT __stdcall(IDXGISwapChain* this_, UINT buffer_count, UINT width, UINT height, DXGI_FORMAT new_format, UINT swapchain_flags)> m_originalResizeBuffers;
 
