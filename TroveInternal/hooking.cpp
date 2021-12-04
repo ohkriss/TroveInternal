@@ -10,6 +10,7 @@
 #include "gui.h"
 #include "Memory/module.h"
 #include "Memory/handle.h"
+
 IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 hooking::hooking() :
@@ -17,10 +18,10 @@ hooking::hooking() :
 	m_convert_thread_to_fiber_hook("ConvertThreadToFiber", memory::module("kernel32.dll").get_export("ConvertThreadToFiber").as<void*>(), &hooks::convert_thread_to_fiber),
 	m_channel_send_hook("channelSend", g_pointers->m_channel_say, &hooks::channel_say)
 {
-	m_og_wndproc = reinterpret_cast<WNDPROC>(SetWindowLongPtrW(g_pointers->m_hwnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&hooks::wndproc)));
 	m_originalPresent = **reinterpret_cast<decltype(m_originalPresent)**>(g_pointers->m_present);
 	m_originalResizeBuffers = **reinterpret_cast<decltype(m_originalResizeBuffers)**>(g_pointers->m_resizebuffers);
 
+	m_og_wndproc = reinterpret_cast<WNDPROC>(SetWindowLongPtrW(g_pointers->m_hwnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&hooks::wndproc)));
 }
 
 hooking::~hooking()
@@ -73,6 +74,7 @@ HRESULT __stdcall hooks::swapchain_present(IDXGISwapChain* this_, UINT sync_inte
 		comptr<ID3D11DeviceContext> m_d3d_device_context;
 		comptr<ID3D11Device> m_dx_device;
 		void* d3d_device{};
+
 		m_dxgi_swapchain->GetDevice(__uuidof(ID3D11Device), &d3d_device);
 		m_dx_device.Attach(static_cast<ID3D11Device*>(d3d_device));
 		m_dx_device->GetImmediateContext(m_d3d_device_context.GetAddressOf());
@@ -94,8 +96,8 @@ HRESULT __stdcall hooks::swapchain_resizebuffers(IDXGISwapChain* this_, UINT buf
 	if (g_running) 
 	{
 		g_renderer->pre_reset();
-		auto result = g_hooking->m_originalResizeBuffers(this_, buffer_count, width, height, new_format, swapchain_flags);
 
+		auto result = g_hooking->m_originalResizeBuffers(this_, buffer_count, width, height, new_format, swapchain_flags);
 		if (SUCCEEDED(result))
 		{
 			g_renderer->post_reset();
@@ -125,7 +127,6 @@ LRESULT __stdcall hooks::wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 {
 	[[maybe_unused]] static const auto imguiInit = [](HWND window) noexcept 
 	{
-
 		ImGui::CreateContext();
 		ImGui_ImplWin32_Init(window);
 
@@ -158,7 +159,7 @@ DWORD* __fastcall hooks::channel_say(DWORD* this_, int edx, int a2) noexcept
 {
 	if (g_running)
 	{
-		LOG(INFO) << this_ << " | " << a2;
+		LOG(INFO) << this_ << " ## " << a2;
 		if (this_)
 			LOG(INFO) << *this_;
 	}
