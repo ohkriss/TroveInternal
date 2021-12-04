@@ -36,10 +36,11 @@ pointers::pointers()
     {
         m_add_message = ptr.add(0x62).as<decltype(m_add_message)>();
     });
-    /*
-     IggyPlayerCallFunctionRS int (__stdcall *IggyPlayerCallFunctionRS)(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
-      E8 ? ? ? ? 8B 7C 24 08 56 (+0x9F)
-    */
+    main_batch.add("IggyPlayerCallFunction", "E8 ? ? ? ? 8B 7C 24 08 56", [&](memory::handle ptr)
+    {
+        m_iggy_player_call = ptr.add(0x9F).as<decltype(m_iggy_player_call)>();
+    });
+
     memory::pattern_batch renderer_batch;
     renderer_batch.add("Swapchain present", "FF 15 ? ? ? ? 8B D8 85 FF 74 25 8B 97 ? ? ? ? 85 D2 74 1B 80 7F 53 00 74 15 8B 87 ? ? ? ? 68 ? ? ? ? 52 50 8B 08 FF 91 ? ? ? ? 85 F6 74 29", [&](memory::handle ptr)
     {
