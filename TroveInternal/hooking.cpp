@@ -135,6 +135,8 @@ LRESULT __stdcall hooks::wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 		ImGui_ImplWin32_Init(window);
 
 		g_renderer = std::make_unique<renderer>();
+		LOG(INFO) << "Renderer initialized.";
+
 		g_hooking->enable();
 		LOG(INFO) << "Hooking enabled.";
 
